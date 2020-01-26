@@ -20,13 +20,13 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // access server routes
-const routes = require("");
+// const routes = require("");
 
 // use server routes
-app.use(routes);
+// app.use(routes);
 
 // start server with client listener
 app.listen(PORT, function() {
   // console.log successful listen
-  console.log("Server listening on: http://localhost:" + PORT);
+  console.log("Now listening on http://localhost:" + PORT);
 });
