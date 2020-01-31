@@ -18,6 +18,7 @@ create table dirty_computers (
     dc_memory_2 varchar(300);
     dc_memory_3 varchar(300);
     cleaned boolean default false,
+    clean_name varchar(30);
     primary key (id)
-)
+);
 
