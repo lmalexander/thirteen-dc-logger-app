@@ -1,7 +1,7 @@
 // import mySQL connection
 const connection = require("../config/connection");
 
-// sql syntax function -- ? array to ? string for sql language processing
+// sql syntax function -- ? array to ? string for sql processing
 function printQuestionMarks(num) {
     const array = [];
     for (const i = 0; i < num; i++) {
@@ -112,4 +112,4 @@ const orm = {
 }
 
 // export sql functions to use in model
-exports.orm;
+module.exports = orm;
