@@ -30,7 +30,7 @@ const dirtyComp = {
     // delete a dirty computer
     delete: function(condition, cb) {
         // use orm model to create new db item
-        orm.delete("dirty_computer", condition, function(res) {
+        orm.delete("dirty_computers", condition, function(res) {
             // callback function to return information to database
             cb(res);
         });
