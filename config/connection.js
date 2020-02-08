@@ -1,6 +1,6 @@
 // dependencies
 const mysql = require("mysql");
-const password = require("./password");
+const password = require("../password");
 
 
 // set up mysql connection

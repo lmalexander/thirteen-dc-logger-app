@@ -20,10 +20,10 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // access server routes
-// const routes = require("");
+const routes = require("./controllers/logger_controller");
 
 // use server routes
-// app.use(routes);
+app.use(routes);
 
 // start server with client listener
 app.listen(PORT, function() {
