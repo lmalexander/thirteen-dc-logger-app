@@ -1,16 +1,17 @@
 // dependencies
 const express = require("express");
 
+// import logger model
+const dirtyCompLogger = require("../models/logger");
+
 // create express router for api data
 const router = express.Router();
 
-// import logger model
-const logger = require("../models/logger");
 
 // create api data routes
 // POST - create
 router.post("/api/dirtycomputers", function(req,res) {
-    dirtyComp.create(
+    dirtyCompLogger.create(
         // keys
         [ "dc_name", "dc_memory_1", "cleaned", "clean_name" ],
         // user input values
@@ -23,15 +24,17 @@ router.post("/api/dirtycomputers", function(req,res) {
 
 // GET - read
 router.get("/", function(req, res) {
-    // return and store dirty_computer table data as handlebars object
-    dirtyComp.all(function(data) {
-        const hbsObject = {
+    // return and store dirty_computer table data as object to return
+     dirtyCompLogger.all(function(data) {
+        // store sql data to be returned to handlebars page
+        const returnData = {
             dirty_computers: data
         };
-        // check hbs object
-        console.log(hbsObject);
-        // render hbs object to handlebars index page
-        res.render("index", hbsObject);
+        // check returnData
+        console.log("return data object:" + returnData);
+
+        // render returnData to handlebars index page
+        res.render("index", returnData);
     });
 });
 
@@ -42,7 +45,7 @@ router.put("/api/dirtycomputers/:id", function(req, res) {
     // check id
     console.log("condition" + condition);
     // method to update data in an existing table
-    dirtyComp.update({
+    dirtyCompLogger.update({
         cleaned: req.body.cleaned,
         clean_name: req.body.clean_name
         // change data based on req.params.id
@@ -64,7 +67,7 @@ router.delete("/api/dirtycomputers/:id", function(req, res) {
        // check id
        console.log("delete " + condition); 
        // delete method
-       dirtyComp.delete(condition, function(result) {
+       dirtyCompLogger.delete(condition, function(result) {
            if (result.affectedRows == 0) {
         // 404 error message -- no row was deleted
                return res.status(404).end();

@@ -1,5 +1,5 @@
 // import mySQL connection
-const connection = require("../config/connection");
+const connection = require("./connection");
 
 // sql syntax function -- ? array to ? string for sql processing
 function printQuestionMarks(num) {
@@ -38,7 +38,7 @@ const orm = {
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
-        queryString += "VALUES (";
+        queryString += "values (";
         queryString += printQuestionMarks(vals.length);
         queryString += ") ";
         // check sql query string
@@ -53,6 +53,7 @@ const orm = {
             cb(result);
         });
     },
+
     // read: select from
     read: function(table, cb) {
         // create sql query string with input table value
@@ -69,6 +70,7 @@ const orm = {
             cb(result);
         });
     },
+
     // update: update
     update: function(table, objColVals, condition, cb) {
         // start sql query string
@@ -90,6 +92,7 @@ const orm = {
             cb(result);
         });
     },
+
     // delete: delete from 
     delete: function(table, condition, cb) {
         // start sql query string
@@ -109,7 +112,7 @@ const orm = {
             cb(result);
     });
     }
-}
+};
 
 // export sql functions to use in model
 module.exports = orm;

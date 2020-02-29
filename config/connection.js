@@ -22,4 +22,4 @@ connection.connect(function(err) {
 });
 
 // export mysql connection module
-exports.connection;
+module.exports = connection;
